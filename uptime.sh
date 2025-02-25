@@ -19,7 +19,7 @@ echo $VALIDATOR_STATUS >> $UPTIME_FILE
 #COUNTED_BLOCKS=$(echo $VALIDATOR_STATUS | jq -r .countedBlocks )
 COUNTED_BLOCKS=$(echo $VALIDATOR_STATUS | jq -r .uptime )
 
-if [ "$COUNTED_BLOCKS" = "100" ]; then
+if [ "$COUNTED_BLOCKS" -gt 80 ]; then
    echo "OK_ALL_BLOCK_SIGNED" >> $UPTIME_FILE
 else
   echo "WARN_MISSING_BLOCKS" >> $UPTIME_FILE
